@@ -25,17 +25,28 @@ Std6730251174IPFinal2026/
 
 ---
 
+## 🌐 Cloud Deployment & Database Details
+- **Assigned Cloud Server:** `http://119.59.102.161:3089`
+- **Assigned MySQL Database:** `ip_std6730251174`
+- **Database Table:** `PhongBoon_Employ` (Fields: `PhongBoon_ID_Employ`, `PhongBoon_Name_Employ`, `PhongBoon_Position_Employ`, `PhongBoon_Status_Employ`, `PhongBoon_Salary_Employ`)
+- **Compatibility View:** `NinSom_Employ` (Aliases to teacher's specified initials)
+- **API Response:** Returns standard fields (`id`, `name`, `position`, `salary`, `status`) along with `PhongBoon_*` and `NinSom_*` aliases for complete compatibility.
+
+---
+
 ## 🚀 How to Run the Application
 
-### 1. Start Backend Server
+The frontend has built-in **Resilient Fallback**: it automatically connects to the deployed Cloud Server (`119.59.102.161:3089`). If testing offline, it seamlessly falls back to `localhost:3089`.
+
+### 1. Start Backend Server (Optional if testing local)
 Open **Terminal 1**:
 ```bash
 cd backend
 npm install
 npm start
 ```
-- Server will listen at: `http://localhost:3089`
-- Storage: **In-Memory Array** (Initialized with 7 mock employees according to the exam specification)
+- Server will listen at: `http://localhost:3089` (or `http://119.59.102.161:3089` on cloud)
+- Connects to MySQL on cloud with automatic In-Memory fallback mode.
 
 ---
 
@@ -48,7 +59,7 @@ npm run web
 ```
 *(Or run `npx expo start` to run on Android / iOS via Expo Go)*
 
-The web browser will open at `http://localhost:8081` and automatically connect to `http://localhost:3089`.
+The web browser will open at `http://localhost:8081` and connect automatically.
 
 ---
 
@@ -56,6 +67,7 @@ The web browser will open at `http://localhost:8081` and automatically connect t
 As specified in the exam requirements:
 - **Username:** `admin`
 - **Password:** `password123`
+*(Or click the **Create Account** tab on the login screen to register and test any custom account)*
 
 ---
 

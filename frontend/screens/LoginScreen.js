@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
   ScrollView,
 } from "react-native";
-import { API_URL } from "../config";
+import { API_URL, resilientFetch } from "../config";
 
 const showAlert = (title, message) => {
   if (Platform.OS === "web") {
@@ -57,7 +57,7 @@ export default function LoginScreen({ navigation }) {
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/login`, {
+      const response = await resilientFetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -121,7 +121,7 @@ export default function LoginScreen({ navigation }) {
 
     // Try registering on backend
     try {
-      await fetch(`${API_URL}/api/register`, {
+      await resilientFetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
